@@ -69,7 +69,8 @@ def test_lambda_handler(apigw_event):
 
     assert ret["statusCode"] == 200
     assert "message" in ret["body"]
-    assert data["message"] == "ok"
+    assert data["message"] != "Something went wrong"
     assert "Available Items" in ret["body"]
-    assert data["Available Items"].get("Total") == '0.00'
-    assert data["Available Items"].get("Available Items").get("ABCDEF").get("Message") == 'Item with SKU ABCDEF is not available in inventory.'
+    assert data["message"].get("Total") == '0.00'
+    assert data["message"].get("Available Items").get("ABCDEF").get("Message") == 'Item with SKU ABCDEF is not available in inventory.'
+

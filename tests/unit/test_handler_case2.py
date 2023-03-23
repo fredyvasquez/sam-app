@@ -69,6 +69,6 @@ def test_lambda_handler(apigw_event):
 
     assert ret["statusCode"] == 200
     assert "message" in ret["body"]
-    assert data["message"] == "ok"
+    assert data["message"] != "Something went wrong"
     assert "Available Items" in ret["body"]
-    assert data["Available Items"].get("Total") == '99.98'
+    assert data["message"].get("Total") == '99.98'
